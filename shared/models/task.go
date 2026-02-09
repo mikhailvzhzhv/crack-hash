@@ -8,5 +8,5 @@ type Task struct {
 	PartCount  int
 	Alphabet   string
 	WordLen    int
-	TargetHash string
+	TargetHash [16]byte
 }
