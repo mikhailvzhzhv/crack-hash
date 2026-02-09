@@ -1,0 +1,6 @@
+github.com/gitchander/permutation v0.0.0-20251112064953-82b3c495f44f h1:eldhCt9Xo4RhEx8Fxi4nBhu4ZX2akR3pqSegITZadEQ=
+github.com/gitchander/permutation v0.0.0-20251112064953-82b3c495f44f/go.mod h1:dIqOZ+i1Ld5mkHPJTK88rgcKFTWMn1FRoPqpCaZYV40=
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/mikhailvzhzhv/crack-hash/shared v0.0.0-20260209113255-badbf6518930 h1:io5lCnUboCbVOsi7lssFgBRkR0qvQVkJFF7j3K/VqO0=
+github.com/mikhailvzhzhv/crack-hash/shared v0.0.0-20260209113255-badbf6518930/go.mod h1:HO7sbeXYzly0DbWLlJhhCgDMFb+y5oVgpfHp3ZSdEQc=
