@@ -2,11 +2,9 @@ package models
 
 import "github.com/google/uuid"
 
-type Task struct {
+type Result struct {
 	RequestID  uuid.UUID
 	PartNumber int
 	PartCount  int
-	Alphabet   string
-	MaxWordLen int
-	TargetHash [16]byte
+	Words      []string
 }
