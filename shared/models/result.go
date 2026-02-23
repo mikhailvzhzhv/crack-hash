@@ -3,8 +3,8 @@ package models
 import "github.com/google/uuid"
 
 type Result struct {
-	RequestID  uuid.UUID
-	PartNumber int
-	PartCount  int
-	Words      []string
+	RequestID  uuid.UUID `json:"request_id"`
+	PartNumber int       `json:"part_number"`
+	PartCount  int       `json:"part_count"`
+	Words      []string  `json:"words"`
 }
