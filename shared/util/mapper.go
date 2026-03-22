@@ -17,25 +17,25 @@ func StructToJSON(obj any) []byte {
 }
 
 func JSONToTask(data []byte) *models.Task {
-	var task *models.Task
+	var task models.Task
 
-	err := json.Unmarshal(data, task)
+	err := json.Unmarshal(data, &task)
 	if err != nil {
 		FailOnError(err, "Failed to unmarshal JSON to Task")
 		return nil
 	}
 
-	return task
+	return &task
 }
 
 func JSONToResult(data []byte) *models.Result {
-	var result *models.Result
+	var result models.Result
 
-	err := json.Unmarshal(data, result)
+	err := json.Unmarshal(data, &result)
 	if err != nil {
 		FailOnError(err, "Failed to unmarshal JSON to Result")
 		return nil
 	}
 
-	return result
+	return &result
 }
