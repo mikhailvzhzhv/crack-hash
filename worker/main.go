@@ -12,11 +12,14 @@ import (
 
 func main() {
 	repo := repository.NewSimpleRepository()
-	resultSender := service.NewResultSenderRest()
+	resultSender := service.NewResultSenderMq()
 	taskProcessor, err := service.NewTaskProcessor(resultSender, repo)
 	if err != nil {
 		log.Fatalf("error while create TaskProcessor: %v", err)
 	}
+
+	taskReceiver := service.NewTaskReceiver(taskProcessor, resultSender)
+	taskReceiver.Receive()
 
 	taskHandler := handler.NewTaskHandler(taskProcessor)
 

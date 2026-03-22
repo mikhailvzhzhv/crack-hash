@@ -44,6 +44,8 @@ github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260223134320-8bb4948de75f
 github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260223134320-8bb4948de75f/go.mod h1:qPYjY2iR1FRjLfUlXAun2Kro9MS1JK+i96s4XbAj4C8=
 github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260311172535-ac4038577b92 h1:mnwcMYcWx2Kf+T9b82lQ/PTAo4pCZPA6RbmRQAX9qrk=
 github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260311172535-ac4038577b92/go.mod h1:qPYjY2iR1FRjLfUlXAun2Kro9MS1JK+i96s4XbAj4C8=
+github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260322172233-bf39337e9013 h1:bWlpCGMldVxg4daResljry3scmXb7GThDQA7QgJP3LE=
+github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260322172233-bf39337e9013/go.mod h1:qPYjY2iR1FRjLfUlXAun2Kro9MS1JK+i96s4XbAj4C8=
 github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421 h1:ZqeYNhU3OHLH3mGKHDcjJRFFRrJa6eAM5H+CtDdOsPc=
 github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
 github.com/modern-go/reflect2 v1.0.2 h1:xBagoLtFs94CBntxluKeaWgTMpvLxC4ur3nMaC9Gz0M=

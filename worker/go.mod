@@ -4,7 +4,7 @@ go 1.25.5
 
 require (
 	github.com/gin-gonic/gin v1.11.0
-	github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260311172535-ac4038577b92
+	github.com/mikhailvzhzhv/crack-hash/shared/v2 v2.0.0-20260322172233-bf39337e9013
 	github.com/rabbitmq/amqp091-go v1.10.0
 	github.com/stretchr/testify v1.11.1
 )

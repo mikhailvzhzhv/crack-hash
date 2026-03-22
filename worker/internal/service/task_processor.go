@@ -41,7 +41,7 @@ func NewTaskProcessor(resultSender ResultSender, repo *repository.SimpleReposito
 	}, nil
 }
 
-func (s *TaskProcessor) ProcessTask(task *shared.Task) {
+func (s *TaskProcessor) ProcessTask(task *shared.Task) *shared.Result {
 	if task.Algorithm != shared.MD5 {
 		panic("unknown algorithm: " + task.Algorithm)
 	}
@@ -59,7 +59,7 @@ func (s *TaskProcessor) ProcessTask(task *shared.Task) {
 	for {
 		select {
 		case <-ctx.Done():
-			return
+			return nil
 		default:
 		}
 
@@ -80,15 +80,13 @@ func (s *TaskProcessor) ProcessTask(task *shared.Task) {
 	log.Printf("wordCount: %d; seconds: %f", wordCount, timer.GetSeconds())
 	avgExecutionTime := int(float64(wordCount) / timer.GetSeconds())
 
-	result := &shared.Result{
+	return &shared.Result{
 		RequestID:        task.RequestID,
 		Words:            targetWords,
 		PartNumber:       task.PartNumber,
 		PartCount:        task.PartCount,
 		AvgExecutionTime: avgExecutionTime,
 	}
-
-	s.resultSender.SendResult(result)
 }
 
 func (s *TaskProcessor) saveTaskWithContext(task *shared.Task) (context.Context, context.CancelFunc) {

@@ -21,7 +21,7 @@ func (r *ResultSenderMq) SendResult(result *models.Result) {
 }
 
 func NewResultSenderMq() *ResultSenderMq {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq:5672/")
 	shared.FailOnError(err, "Failed to connect to RabbitMQ")
 
 	ch, err := conn.Channel()

@@ -7,6 +7,10 @@ services:
       - "9000"
     environment:
       - BATCH_SIZE=5000
+    restart: unless-stopped
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
 
   manager:
     build: ./manager
@@ -15,6 +19,25 @@ services:
     environment:
       - BATCH_SIZE=5000
       - WORKER_COUNT=2
+    restart: unless-stopped
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   nginx:
     image: nginx

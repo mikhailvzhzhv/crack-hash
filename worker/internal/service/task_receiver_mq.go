@@ -1,6 +1,8 @@
 package service
 
 import (
+	"log"
+
 	shared "github.com/mikhailvzhzhv/crack-hash/shared/v2/util"
 	amqp "github.com/rabbitmq/amqp091-go"
 )
@@ -12,21 +14,19 @@ type TaskReceiverMq struct {
 }
 
 func NewTaskReceiver(taskProcessor *TaskProcessor, resultSender ResultSender) *TaskReceiverMq {
-	conn, err := amqp.Dial("amqp://guest:guest@localhost:5672/")
+	conn, err := amqp.Dial("amqp://guest:guest@rabbitmq:5672/")
 	shared.FailOnError(err, "Failed to connect to RabbitMQ")
-	defer conn.Close()
 
 	ch, err := conn.Channel()
 	shared.FailOnError(err, "Failed to open a channel")
-	defer ch.Close()
 
 	q, err := ch.QueueDeclare(
-		"task_queue", // name
-		true,         // durable
-		false,        // delete when unused
-		false,        // exclusive
-		false,        // no-wait
-		nil,          // arguments
+		"task", // name
+		false,  // durable
+		false,  // delete when unused
+		false,  // exclusive
+		false,  // no-wait
+		nil,    // arguments
 	)
 	shared.FailOnError(err, "Failed to declare a queue")
 
@@ -57,16 +57,17 @@ func NewTaskReceiver(taskProcessor *TaskProcessor, resultSender ResultSender) *T
 
 func (t *TaskReceiverMq) Receive() {
 	go func() {
-		// for d := range t.msgs {
-		// 	log.Printf("Received a message: %s", d.Body)
+		for d := range t.msgs {
+			log.Printf("Received a message: %s", d.Body)
 
-		// 	task := shared.JSONToTask(d.Body)
+			task := shared.JSONToTask(d.Body)
 
-		// 	result := t.taskProcessor.ProcessTask(task)
-		// 	t.resultSender.SendResult(result)
+			result := t.taskProcessor.ProcessTask(task)
+			log.Printf("result: %s", result)
+			t.resultSender.SendResult(result)
 
-		// 	log.Printf("Done")
-		// 	d.Ack(false)
-		// }
+			log.Printf("Done")
+			d.Ack(false)
+		}
 	}()
 }

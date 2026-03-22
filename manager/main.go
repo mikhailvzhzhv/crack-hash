@@ -17,8 +17,10 @@ func main() {
 	statisticRepo := repository.NewStatisticRepository()
 
 	resultProcessor := result.NewResultProcessor(repo, statisticRepo)
+	resultAggregatorMq := result.NewResultAggregator(resultProcessor)
+	resultAggregatorMq.Aggregate()
 
-	taskSender := task.NewTaskSenderRest()
+	taskSender := task.NewTaskSenderMq()
 	statisticService := statistic.NewStatisticService(statisticRepo)
 	crackHashService, err := task.NewCrackHashService(taskSender, repo, statisticRepo)
 	if err != nil {
