@@ -10,6 +10,7 @@ const (
 
 type Task struct {
 	RequestID  uuid.UUID `json:"request_id"`
+	TaskID     uuid.UUID `json:"task_id"`
 	PartNumber int       `json:"part_number"`
 	PartCount  int       `json:"part_count"`
 	Alphabet   string    `json:"alphabet"`
